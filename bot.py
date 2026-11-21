@@ -74,6 +74,15 @@ class HealthHandler(BaseHTTPRequestHandler):
         logger.info("HTTP: " + fmt, *args)
 
 
+def start_health_server():
+    port = int(os.getenv("PORT", "10000"))
+    server = ThreadingHTTPServer(("0.0.0.0", port), HealthHandler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    logger.info("Health endpoint listening on port %s", port)
+    return server
+
+
 # ==================================================
 # DATABASE
 # ==================================================
