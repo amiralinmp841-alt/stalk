@@ -34,7 +34,7 @@ ADMIN_ID = int(os.getenv("ADMIN_ID", "123456789"))
 DATA_FILE = Path("database.json")
 
 DEFAULT_INTERVAL = 60
-MIN_INTERVAL = 60
+MIN_INTERVAL = 5
 
 # ==================================================
 # LOGGING
